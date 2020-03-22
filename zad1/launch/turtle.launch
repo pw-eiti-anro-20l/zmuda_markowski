@@ -1,0 +1,6 @@
+<launch>
+	<group ns="sim">
+	 <node pkg="turtlesim" name="turtle1" type="turtlesim_node"/>
+	 <node pkg="zad1" name="talker" type="talker.py" output="screen"/>
+	</group>
+</launch>
