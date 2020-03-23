@@ -6,7 +6,7 @@ from geometry_msgs.msg import Twist
 from curtsies import Input
 
 
-param_name = rospy.search_param("/")
+param_name = rospy.search_param("sim/")
 keys = rospy.get_param(param_name)
 
 def get_key():

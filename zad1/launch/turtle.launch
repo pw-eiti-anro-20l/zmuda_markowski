@@ -1,6 +1,10 @@
 <launch>
 	<group ns="sim">
 	 <node pkg="turtlesim" name="turtle1" type="turtlesim_node"/>
+	     <param name = "forward" value = "w"/>
+		 <param name = "back" value = "s"/>
+		 <param name = "left" value = "a"/>
+		 <param name = "right" value = "d"/>
 	 <node pkg="zad1" name="talker" type="talker.py" output="screen"/>
 	</group>
 </launch>
