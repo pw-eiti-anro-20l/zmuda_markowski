@@ -8,7 +8,10 @@ project(zad2)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  urdf
+  rospy
+  std_msgs
+  tf
+  roscpp
 )
 
 ## System dependencies are found with CMake's conventions
