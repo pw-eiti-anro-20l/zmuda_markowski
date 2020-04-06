@@ -3,7 +3,7 @@
 import json
 from tf.transformations import *
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     x, z = (1, 0, 0), (0, 0, 1)  # wektory dla osi w notacji dh potrzebne do macierzy rotacji
     parameters = {}
     with open("../dh.json", "r") as file:
