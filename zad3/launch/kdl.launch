@@ -1,0 +1,9 @@
+<launch>
+
+    <param name = "robot_description" command = "xacro --inorder '$(find zad3)/urdf/move.urdf'"/>
+    <param name = "use_gui" value = "true"/>
+    <node name = "KDL_DKIN" pkg = "zad3" type = "kdl.py"/>
+    <node name = "joint_state_publisher" pkg = "joint_state_publisher" type = "joint_state_publisher"/>
+    <node name = "rviz" pkg = "rviz" type = "rviz" args = "-f base" required = "true"/>
+
+</launch>
