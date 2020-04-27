@@ -53,7 +53,6 @@ wraz z nadaniem obliczonych wartosci
     rot_x = rotation_matrix(alfa, x)
     matrix_3 = concatenate_matrices(rot_x, trans_x, rot_z, trans_z) #macierz_3
 
-
     #kinematyka prosta przeliczenie na translacje i rotacje czlonu koncowego
     matrix_t = concatenate_matrices(matrix_1, matrix_2, matrix_3)
     x_t, y_t, z_t = translation_from_matrix(matrix_t)
