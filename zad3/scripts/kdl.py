@@ -9,10 +9,10 @@ from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseStamped
 
 def find_position(data):
-'''
-spr czy pozycja nie jest błędna, tj. po za ograniczeniami spowodowanymi budową robota
-limity wczytane z przygotowanego pliku
-'''
+    '''
+    spr czy pozycja nie jest bledna, tj. po za ograniczeniami spowodowanymi budowa robota
+    limity wczytane z przygotowanego pliku
+    '''
     if data.position[0] < limit['i1'][0] or data.position[0] > limit['i1'][1]:
         return False
     if data.position[1] < limit['i2'][0] or data.position[1] > limit['i2'][1]:
@@ -22,12 +22,12 @@ limity wczytane z przygotowanego pliku
     return True
 
 def simple_kinematic(data):
-'''
-realizacja kinematyki prostej z uzyciem biblioteki KDL
-wraz z nadaniem obliczonych wartosci
-'''
+    '''
+    realizacja kinematyki prostej z uzyciem biblioteki KDL
+    wraz z nadaniem obliczonych wartosci
+    '''
     if not find_position(data):
-        rospy.logerr('Wrong position: ' + str(data)) #spr czy nie błędna pozycja
+        rospy.logerr('Wrong position: ' + str(data)) #spr czy nie bledna pozycja
         return
 
     kdl_chain = kdl.Chain()

@@ -9,10 +9,10 @@ from visualization_msgs.msg import Marker
 
 
 def find_position(data):
-'''
-spr czy pozycja nie jest błędna, tj. po za ograniczeniami spowodowanymi budową robota
-limity wczytane z przygotowanego pliku
-'''
+    '''
+    spr czy pozycja nie jest bledna, tj. po za ograniczeniami spowodowanymi budowa robota
+    limity wczytane z przygotowanego pliku
+    '''
     if data.position[0] < limit['i1'][0] or data.position[0] > limit['i1'][1]:
         return False
     if data.position[1] < limit['i2'][0] or data.position[1] > limit['i2'][1]:
@@ -22,12 +22,12 @@ limity wczytane z przygotowanego pliku
     return True
 
 def simple_kinematic(data):
-'''
-realizacja kinematyki prostej bez uzycia biblioteki KDL
-wraz z nadaniem obliczonych wartosci
-'''
+    '''
+    realizacja kinematyki prostej bez uzycia biblioteki KDL
+    wraz z nadaniem obliczonych wartosci
+    '''
     if not find_position(data):
-        rospy.logerr('Wrong position: ' + str(data)) #spr czy nie błędna pozycja
+        rospy.logerr('Wrong position: ' + str(data)) #spr czy nie bledna pozycja
         return
 
     x, z = (1, 0, 0), (0, 0, 1) # wektory dla osi w notacji dh potrzebne do macierzy rotacji
@@ -61,7 +61,7 @@ wraz z nadaniem obliczonych wartosci
     pose = PoseStamped()
     pose.header.frame_id = 'base_link'
     pose.header.stamp = rospy.Time.now()
-    #nadanie wiadomosci z wyliczonymi wspolrzednymi czlonu koncowego
+    
     pose.pose.position.x = x_t
     pose.pose.position.y = y_t
     pose.pose.position.z = z_t
@@ -75,7 +75,6 @@ if __name__ == '__main__':
     rospy.init_node('NONKDL_DKIN', anonymous=True)
     pub = rospy.Publisher('non_kdl_msgs', PoseStamped, queue_size=10)
     rospy.Subscriber('joint_states', JointState, simple_kinematic)
-
     params = {}
     limit = {}
 
