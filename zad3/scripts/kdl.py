@@ -79,7 +79,7 @@ def simple_kinematic(data):
 if __name__ == '__main__':
     rospy.init_node('KDL_DKIN', anonymous=True)
     pub = rospy.Publisher('kdl_msgs', PoseStamped, queue_size=10)
-    rospy.Subscriber('joint_states', JointState, simpleKinematics)
+    rospy.Subscriber('joint_states', JointState, simple_kinematic)
 
     params = {}
     limit = {}
