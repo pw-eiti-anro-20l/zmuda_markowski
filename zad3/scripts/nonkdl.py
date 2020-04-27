@@ -2,6 +2,7 @@
 
 import rospy
 import json
+import os
 from tf.transformations import *
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseStamped
@@ -78,10 +79,10 @@ if __name__ == '__main__':
     params = {}
     limit = {}
 
-    with open('../dh.json', 'r') as file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + '/../dh.json', 'r') as file:
         params = json.loads(file.read())
 
-    with open('../limit.json', 'r') as file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + '/../limit.json', 'r') as file:
         limit = json.loads(file.read())
 
     rospy.spin()
