@@ -4,6 +4,6 @@
     <param name = "use_gui" value = "true"/>
     <node name = "NONKDL_DKIN" pkg = "zad3" type = "nonkdl.py"/>
     <node name = "joint_state_publisher" pkg = "joint_state_publisher" type = "joint_state_publisher"/>
-    <node name = "rviz" pkg = "rviz" type = "rviz" args = "-f base" required = "true"/>
+    <node name = "rviz" pkg = "rviz" type = "rviz" args = "-f base_link" required = "true"/>
     
 </launch>
