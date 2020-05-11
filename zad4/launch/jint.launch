@@ -1,0 +1,7 @@
+<launch>
+    <param name="robot_description" command="xacro --inorder '$(find zad4)/urdf/move.urdf'"/>
+    <param name="use_gui" value="true"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="jint" pkg="zad4" type="jint.py" output="screen"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-f base_link" required="true"/>
+</launch>
