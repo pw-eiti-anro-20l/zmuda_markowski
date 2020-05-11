@@ -53,7 +53,7 @@ def interpolation(start, last, time, current_time, inter):
 
 def joint_publisher():
     '''
-    #funkcja publikujaca oblicozne transformacje ukladu
+    funkcja publikujaca oblicozne transformacje ukladu
     '''
     pub = rospy.Publisher('joint_states', JointState, queue_size=10)
     srv = rospy.Service('int', Interpolation, make_interpolation)

@@ -4,6 +4,7 @@ import rospy
 from zad4.srv import Oint
 from geometry_msgs.msg import PoseStamped
 from std_msgs.msg import Header
+from sensor_msgs.msg import JointState
 import math
 
 freq = 50    #wartosci poczatkowe
@@ -60,15 +61,16 @@ def interpolation(start, last, time, current_time, inter):
 
 def transformation_publisher():
     '''
-    #funkcja publikujaca oblicozne transformacje ukladu
+    funkcja publikujaca oblicozne transformacje ukladu
     '''
     pub = rospy.Publisher('interpolation', PoseStamped, queue_size=10)
-    srv = rospy.Service('int', Oint, make_interpolation)
-    rospy.init_node('int_srv')
-    rate = rospy.Rate(100)
+    srv = rospy.Service('oint', Oint, make_interpolation)
+    rospy.init_node('oint_srv')
+    print "publisher init"
+    rate = rospy.Rate(freq)
     pose = PoseStamped()
     while not rospy.is_shutdown():
-        pose.header.frame_id = 'base'
+        pose.header.frame_id = 'base_link'
         pose.header.stamp = rospy.Time.now()
         pose.pose.position.x = current_trans[0]
         pose.pose.position.y = current_trans[1]
@@ -78,6 +80,9 @@ def transformation_publisher():
         pose.pose.orientation.z = current_rot[2]
         pose.pose.orientation.w = 1
         pub.publish(pose)
+        rate.sleep()
+
+    print "publisher done"
 
 if __name__ == "__main__":
     try:

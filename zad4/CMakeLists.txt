@@ -8,11 +8,11 @@ project(zad4)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  message_runtime
   rospy
   sensor_msgs
   std_msgs
   tf
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -107,7 +107,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES zad4
-#  CATKIN_DEPENDS message_runtime rospy sensor_msgs std_msgs tf
+CATKIN_DEPENDS rospy sensor_msgs std_msgs tf message_runtime
 #  DEPENDS system_lib
 )
 

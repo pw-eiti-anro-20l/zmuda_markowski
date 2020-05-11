@@ -6,9 +6,9 @@ from zad4.srv import Oint
 
 #funkcja rzadajaca interpolacji ukladu
 def interpolation_client(x, y, z, qx, qy, qz, time, style):
-    rospy.wait_for_service('int')
+    rospy.wait_for_service('oint')
     try:
-        interpolation = rospy.ServiceProxy('int', Oint)
+        interpolation = rospy.ServiceProxy('oint', Oint)
         response = interpolation(x, y, z, qx, qy, qz, time, style)
         return response.status
     except rospy.ServiceException, e:
