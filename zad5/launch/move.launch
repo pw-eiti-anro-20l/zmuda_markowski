@@ -1,0 +1,8 @@
+<launch>
+    <rosparam command="load" file="$(find zad5)/urdf_val.yaml"/>
+    <param name="robot_description" command="xacro --inorder '$(find zad5)/urdf/move.urdf'"/>
+    <param name="use_gui" value="true"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-f base_link" required="true"/>
+    <node pkg="rostopic" type="rostopic" name="rostopic" args="pub joint_states sensor_msgs/JointState -- '[0, now, base_link]' '[joint1, joint2, joint3]' '[0.0,0.0,0.0]' '[]' '[]'"/>
+</launch>
